@@ -20,7 +20,7 @@ app.use(passport.session());
 
 app.use(
 	cors({
-		origin: "http://localhost:3000",
+		origin: ["https://test-gauth-bice.vercel.app","http://test-gauth-bice.vercel.app"],
 		methods: "GET,POST,PUT,DELETE",
 		credentials: true,
 	})
