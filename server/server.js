@@ -1,32 +1,27 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const passport = require("passport");
-const authRoute = require("./routes/auth");
-const cookieSession = require("cookie-session");
-const passportStrategy = require("./passport");
-const app = express();
+const express = require('express')
+require('dotenv').config()
+const app = express()
+const cors =  require('cors')
 
-app.use(
-	cookieSession({
-		name: "session",
-		keys: ["cyberwolve"],
-		maxAge: 24 * 60 * 60 * 100,
-	})
-);
+app.use(cors({
+	origin: "http://localhost:5173",
+	credentials: true
+}))
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.get('/add', (req,res) => {
+	try {
+		res.cookie("cook", "I am getting cooked", {
+			maxAge: 7 * 24 * 60 * 60* 1000,
+			secure: true,
+			sameSite: 'lax',
+			httpOnly: true
+		})
+		return res.send("Cookie added")
+	} catch (error) {
+		return res.send(error)
+	}
+})
 
-app.use(
-	cors({
-		origin: ["https://test-gauth-bice.vercel.app","http://test-gauth-bice.vercel.app"],
-		methods: "GET,POST,PUT,DELETE",
-		credentials: true,
-	})
-);
-
-app.use("/auth", authRoute);
-
-const port = process.env.PORT || 8080;
-app.listen(port, () => console.log(`Listenting on port ${port}...`));
+app.listen(3000, () => {
+	console.log("Running ...")
+})
