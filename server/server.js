@@ -14,7 +14,7 @@ app.get('/add', (req,res) => {
 			path: '/',
 			maxAge: 7 * 24 * 60 * 60* 1000,
 			secure: true,
-			sameSite: 'none',
+			sameSite: 'strict',
 			httpOnly: true
 		})
 		return res.send("Cookie added")
