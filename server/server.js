@@ -4,7 +4,7 @@ const app = express()
 const cors =  require('cors')
 
 app.use(cors({
-	origin: "https://test-gauth-nine.vercel.app",
+	origin: "https://test-gauth-1.onrender.com",
 	credentials: true
 }))
 
@@ -14,7 +14,7 @@ app.get('/add', (req,res) => {
 			domain: '.vercel.app',
 			maxAge: 7 * 24 * 60 * 60* 1000,
 			secure: true,
-			sameSite: 'lax',
+			sameSite: 'none',
 			httpOnly: true
 		})
 		return res.send("Cookie added")
