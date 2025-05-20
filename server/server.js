@@ -11,6 +11,7 @@ app.use(cors({
 app.get('/add', (req,res) => {
 	try {
 		res.cookie("cook", "I am getting cooked", {
+			path: '/',
 			maxAge: 7 * 24 * 60 * 60* 1000,
 			secure: true,
 			sameSite: 'none',
