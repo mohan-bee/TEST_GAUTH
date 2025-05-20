@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 
 const App = () => {
   const fetch = async () => {
-    let res = await axios.get('http://localhost:3000/add', {withCredentials: true})
+    let res = await axios.get('https://test-gauth.onrender.com/add', {withCredentials: true})
     console.log(res)
   }
 
